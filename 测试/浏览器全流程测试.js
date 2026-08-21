@@ -33,7 +33,7 @@ async function main() {
   watchErrors(page);
   await login(page, 'u1');
   await page.waitForTimeout(350);
-  await page.screenshot({ path: path.join(shots, 'desktop-market.png'), fullPage: true });
+  await page.screenshot({ path: path.join(shots, '桌面端-需求市场.png'), fullPage: true });
   await page.locator('.top-publish').click();
   await page.locator('#taskTitle').fill('高等数学作业思路辅导与错题讲解');
   await page.locator('#taskCategory').selectOption({ label: '作业辅导' });
@@ -67,14 +67,14 @@ async function main() {
   await flow.locator('[data-task-action="applications"]').click();
   await flow.locator('.application-card').filter({ hasText: '陈默' }).waitFor();
   await flow.waitForTimeout(300);
-  await flow.screenshot({ path: path.join(shots, 'desktop-applications.png'), fullPage: true });
+  await flow.screenshot({ path: path.join(shots, '桌面端-报名列表.png'), fullPage: true });
   await flow.locator('[data-select-application]').click();
   await flow.locator('[data-task-action="chat"]').click();
   await flow.locator('#chatInput').fill('你先把数据清洗部分做成可运行初版，今晚我们一起确认三张图表的选择。');
   await flow.locator('#chatForm').evaluate(form => form.requestSubmit());
   await flow.getByText('你先把数据清洗部分做成可运行初版').waitFor();
   await flow.waitForTimeout(250);
-  await flow.screenshot({ path: path.join(shots, 'desktop-order-chat.png') });
+  await flow.screenshot({ path: path.join(shots, '桌面端-订单沟通.png') });
   await flow.locator('[data-close-modal]').click();
 
   await switchAccount(flow, 'u1');
@@ -100,7 +100,7 @@ async function main() {
   await flow.locator('[data-confirm-payment]').click();
   await flow.locator('#workspaceView.active-view [data-task-id="t1000"]').click();
   await flow.locator('.modal .status.completed').filter({ hasText: '已完成' }).waitFor();
-  await flow.screenshot({ path: path.join(shots, 'desktop-completed-order.png'), fullPage: true });
+  await flow.screenshot({ path: path.join(shots, '桌面端-已完成订单.png'), fullPage: true });
   await lifecycle.close();
 
   // Mobile: primary homework category, application form and bottom-sheet detail.
@@ -112,12 +112,12 @@ async function main() {
   const cards = await mobilePage.locator('.task-card').evaluateAll(nodes => nodes.slice(0, 2).map(n => n.getBoundingClientRect()));
   if (cards.length > 1 && Math.abs(cards[0].left - cards[1].left) > 2) throw new Error('Mobile cards are not in one column');
   await mobilePage.waitForTimeout(350);
-  await mobilePage.screenshot({ path: path.join(shots, 'mobile-home.png'), fullPage: true });
+  await mobilePage.screenshot({ path: path.join(shots, '手机端-首页.png'), fullPage: true });
   await mobilePage.locator('#marketView.active-view [data-task-id="t1000"]').click();
   await mobilePage.locator('[data-task-action="apply"]').click();
   await mobilePage.locator('#applicationForm').waitFor({ state: 'visible' });
   await mobilePage.waitForTimeout(300);
-  await mobilePage.screenshot({ path: path.join(shots, 'mobile-application.png') });
+  await mobilePage.screenshot({ path: path.join(shots, '手机端-报名表单.png') });
   await mobile.close();
 
   await browser.close();
