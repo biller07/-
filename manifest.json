@@ -1,0 +1,13 @@
+{
+  "name": "算力集 · 作业辅导与任务协作平台",
+  "short_name": "算力集",
+  "description": "作业辅导优先、初版报名选人的任务协作平台原型",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f5f6fa",
+  "theme_color": "#17152f",
+  "lang": "zh-CN",
+  "icons": [
+    { "src": "app-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

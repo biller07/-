@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17152f">
+  <meta name="description" content="算力集——作业辅导优先、初版报名选人的任务协作平台原型">
+  <title>算力集 · 作业辅导与任务协作平台</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2317152f'/%3E%3Cpath d='M20 43 32 13l12 30-12-9z' fill='%237357ed'/%3E%3Ccircle cx='32' cy='34' r='6' fill='%2341d2b4'/%3E%3C/svg%3E">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="i-grid" viewBox="0 0 24 24"><path d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h6v6h-6z"/></symbol>
+    <symbol id="i-orders" viewBox="0 0 24 24"><path d="M9 5h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/><path d="M3 17V5a2 2 0 0 1 2-2h12M11 10h6M11 14h6M11 18h4"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24"><path d="M4 6h15a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a3 3 0 0 1-3-3V6a3 3 0 0 1 3-3h13"/><path d="M16 11h5v5h-5a2.5 2.5 0 0 1 0-5Z"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 4 6v5c0 5.2 3.4 8.5 8 10 4.6-1.5 8-4.8 8-10V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-scan" viewBox="0 0 24 24"><path d="M4 8V4h4M16 4h4v4M20 16v4h-4M8 20H4v-4M8 8h8v8H8z"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="m12 19V5m-6 6 6-6 6 6"/></symbol>
+    <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="m12 5v14m6-6-6 6-6-6"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M3 12h4l2-7 4 14 2-7h6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-logout" viewBox="0 0 24 24"><path d="M10 5H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h5M14 8l4 4-4 4M18 12H8"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+  </svg>
+
+  <div id="loginLayer" class="login-layer" aria-live="polite"></div>
+
+  <div id="app" class="app-shell" hidden>
+    <aside class="sidebar">
+      <button class="brand" data-nav="market" aria-label="返回首页">
+        <span class="brand-mark"><i></i><i></i><i></i></span>
+        <span><strong>算力集</strong><small>COMPUTE HUB</small></span>
+      </button>
+
+      <nav class="side-nav" aria-label="主导航">
+        <p>工作台</p>
+        <button class="nav-item active" data-nav="market"><svg><use href="#i-grid"/></svg><span>协作广场</span></button>
+        <button class="nav-item" data-nav="workspace"><svg><use href="#i-orders"/></svg><span>我的订单</span><b id="orderBadge">0</b></button>
+        <button class="nav-item" data-nav="wallet"><svg><use href="#i-wallet"/></svg><span>结算演示</span></button>
+        <button class="nav-item" data-nav="activity"><svg><use href="#i-activity"/></svg><span>协作动态</span></button>
+      </nav>
+
+      <div class="sidebar-trust">
+        <span><svg><use href="#i-shield"/></svg></span>
+        <strong>协作过程留痕</strong>
+        <p>初版报名、选人、沟通、交付和验收均有记录。</p>
+      </div>
+
+      <button id="sideProfile" class="side-profile" type="button"></button>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-brand brand" data-nav="market" aria-label="返回首页">
+          <span class="brand-mark"><i></i><i></i><i></i></span><strong>算力集</strong>
+        </button>
+        <div class="global-search">
+          <svg><use href="#i-search"/></svg>
+          <input id="globalSearch" type="search" placeholder="搜索需求、科目、技能或服务类型" aria-label="搜索需求">
+          <kbd>⌘ K</kbd>
+        </div>
+        <div class="top-actions">
+          <button id="noticeButton" class="icon-button has-dot" aria-label="通知"><svg><use href="#i-bell"/></svg></button>
+          <button class="primary-button top-publish" data-action="publish"><svg><use href="#i-plus"/></svg>发布需求</button>
+          <button id="mobileAvatar" class="avatar-button" aria-label="个人中心"></button>
+        </div>
+      </header>
+
+      <section id="marketView" class="view active-view"></section>
+      <section id="workspaceView" class="view"></section>
+      <section id="walletView" class="view"></section>
+      <section id="activityView" class="view"></section>
+    </main>
+
+    <nav class="mobile-nav" aria-label="手机端导航">
+      <button class="active" data-nav="market"><svg><use href="#i-grid"/></svg><span>广场</span></button>
+      <button data-nav="workspace"><svg><use href="#i-orders"/></svg><span>订单</span></button>
+      <button class="mobile-publish" data-action="publish"><span><svg><use href="#i-plus"/></svg></span><em>发布</em></button>
+      <button data-nav="wallet"><svg><use href="#i-wallet"/></svg><span>资金</span></button>
+      <button data-nav="activity"><svg><use href="#i-activity"/></svg><span>动态</span></button>
+    </nav>
+  </div>
+
+  <div id="modalRoot"></div>
+  <div id="toastRoot" class="toast-root" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

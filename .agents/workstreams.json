@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "workstreams": [
+    {
+      "id": "WS-00",
+      "name": "contracts-coordination",
+      "doc": "docs/development/03-workstreams/WS-00-contracts-coordination.md",
+      "ownedPaths": ["AGENTS.md", ".agents/*.json", "docs/development/00-governance/**", "docs/development/01-architecture/**", "docs/development/02-plans/**"]
+    },
+    {
+      "id": "WS-01",
+      "name": "frontend-foundation",
+      "doc": "docs/development/03-workstreams/WS-01-frontend-foundation.md",
+      "ownedPaths": ["app.js", "index.html", "styles.css", "manifest.json", "sw.js", "app-icon.svg", "src/client/**"]
+    },
+    {
+      "id": "WS-02",
+      "name": "auth-identity",
+      "doc": "docs/development/03-workstreams/WS-02-auth-identity.md",
+      "ownedPaths": ["src/server/modules/auth/**", "src/server/modules/users/**"]
+    },
+    {
+      "id": "WS-03",
+      "name": "tasks-applications",
+      "doc": "docs/development/03-workstreams/WS-03-tasks-applications.md",
+      "ownedPaths": ["src/server/modules/tasks/**", "src/server/modules/applications/**"]
+    },
+    {
+      "id": "WS-04",
+      "name": "chat-notifications",
+      "doc": "docs/development/03-workstreams/WS-04-chat-notifications.md",
+      "ownedPaths": ["src/server/modules/chat/**", "src/server/modules/notifications/**"]
+    },
+    {
+      "id": "WS-05",
+      "name": "client-product",
+      "doc": "docs/development/03-workstreams/WS-05-client-product.md",
+      "ownedPaths": ["src/client/**"]
+    },
+    {
+      "id": "WS-06",
+      "name": "delivery-files",
+      "doc": "docs/development/03-workstreams/WS-06-delivery-files.md",
+      "ownedPaths": ["src/server/modules/files/**", "src/server/modules/deliveries/**"]
+    },
+    {
+      "id": "WS-07",
+      "name": "payment-compliance-research",
+      "doc": "docs/development/03-workstreams/WS-07-payment-compliance.md",
+      "ownedPaths": ["docs/development/research/payment/**"]
+    },
+    {
+      "id": "WS-08",
+      "name": "qa-security",
+      "doc": "docs/development/03-workstreams/WS-08-qa-security.md",
+      "ownedPaths": ["tests/**", "scripts/validate-*.ps1"]
+    }
+  ]
+}
